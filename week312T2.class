@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Solution {
+    public int longestSubarray(int[] nums) {
+
+        int max = 0;
+
+        int copy[] = new int[nums.length];
+
+        int temp_length = 0;
+
+        int count = 1;
+
+
+        boolean flag = false;
+
+        ArrayList temp_1 = new ArrayList();
+        ArrayList temp_2 = new ArrayList();
+        copy = nums.clone();
+        Arrays.sort(copy);
+        max = copy[nums.length - 1];
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == max) {
+                temp_1.add(i);
+                temp_length += 1;
+            }
+        }
+
+        if (temp_length == 1) {
+            return 1;
+        } else {
+            for (int j = 0; j < temp_length - 1; j++) {
+                if (Integer.parseInt(temp_1.get(j + 1).toString()) - Integer.parseInt(temp_1.get(j).toString()) == 1) {
+                    count += 1;
+                    temp_2.add(count);
+                } else {
+                    count = 1;
+                    temp_2.add(count);
+                }
+
+
+            }
+
+            temp_2.sort(Comparator.naturalOrder());
+            count = Integer.parseInt(temp_2.get(temp_2.size() - 1).toString());
+            return count;
+        }
+    }
+}
+
+//暴力解法
