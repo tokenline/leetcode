@@ -1,0 +1,43 @@
+
+//面试题01.08 零矩阵
+
+//编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。
+
+//先前尝试matrix_copy = matrix.clone(); 或者 matrix_copy = matrix都不行 
+
+//原理还没想 应该是 Java 里类似地址的东西 matrix 和 matrix_copy 这个赋值 赋值的是地址 不是里面的变量
+
+//所以这次写了一个for套嵌 来循环赋值
+
+//-----
+
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int row_num = matrix.length;
+        int coloum_num = matrix[0].length;
+
+        int [][]matrix_copy = new int[row_num][coloum_num];
+
+        for(int x = 0; x <row_num; x++){
+            for(int y = 0; y < coloum_num ; y++){
+                matrix_copy[x][y] = matrix[x][y];
+            }
+        }
+
+        for(int a = 0; a < row_num; a++){
+            for(int b = 0; b< coloum_num; b++){
+                if(matrix_copy[a][b] == 0){
+                      for(int i = 0 ; i < coloum_num ; i++){
+                            matrix[a][i] = 0;
+                         } //set zero in coloum
+
+                        for(int j = 0 ; j < row_num ; j++){
+                            matrix[j][b] = 0;
+                        }
+                }
+            }
+        }
+    }
+
+}
