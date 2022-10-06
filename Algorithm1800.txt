@@ -1,0 +1,57 @@
+解题思路
+
+思路：找到全部递增子数组，算出全部的长度，取最大值。
+
+变量：
+Buffer_list[] 暂时存储目标数组中的递增子数组 并在while循环中刷新
+List_set[] 存储全部的递增子数组
+Flag 控制while循环的控制器
+temp 一个用于存取List_set[]中最大值的变量
+Length 目标数组长度
+
+结构：
+while块用取递增子数组并把它存到List_set[]里
+isBigger() 判断大小
+sum()求和
+
+代码
+
+
+class Solution:
+    def maxAscendingSum(self, nums: List[int]) -> int:
+        Buffer_list = []
+        List_set = []
+        Flag = True
+        temp = 0
+        Length = len(nums)
+
+        if Length == 1 : return nums[0]
+
+        for i in range(0,Length-1,1):
+            j = i
+            while Flag == True :
+                Buffer_list.append(nums[j])
+                Flag = self.isBigger(nums[j+1],nums[j])
+                if Flag == False : break
+                j+=1
+                if j == Length-1 : 
+                    Buffer_list.append(nums[j])
+                    break
+            List_set.append(Buffer_list)
+            Buffer_list = []
+            Flag = True
+
+        for list in List_set:
+            if temp < self.sum(list) : temp = self.sum(list)
+        return temp
+    
+    def isBigger(self, a : int, b : int) -> bool:
+        if a > b : return True
+        if a <= b : return False
+
+    def sum(self, list : [int]) -> int:
+        result = 0
+        for element in list :
+            result += element
+        return result
+
