@@ -1,0 +1,16 @@
+#算法219题
+
+#给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，满足 nums[i] == nums[j] 且 abs(i - j) <= k 。如果存在，返回 true ；否则，返回 false 
+
+
+#暴力解法要超时惹
+
+#字典和枚举类的基本用法
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        dic = {}
+        for i,num in enumerate(nums):
+            if num in dic and i - dic[num] <=k : return True
+            dic[num] = i 
+        return False
