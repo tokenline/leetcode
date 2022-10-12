@@ -1,0 +1,17 @@
+#解题思路
+
+#调用math库的log2函数直接解决。
+
+#代码
+
+
+import math
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        if n<=0 : return False
+        integer_part = int(math.log2(n))
+        decent_part = math.log2(n) - integer_part
+        if decent_part == 0 : return True
+        else : return False
+

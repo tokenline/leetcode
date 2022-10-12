@@ -1,0 +1,34 @@
+### 解题思路
+非常暴力 非常屌丝 非常Lowb的解法 甚至不乐 甚至没有用到搜索树的性质 真是一种十分垃圾的方法 但是挺适合菜鸡的
+
+1.上来先DFS暴力撸一遍二叉树，在这个过程中求出delta = TreeNode.val - target，放到待处理数组List里
+2.用while去掉数组中的空项
+3.用sorted()再撸一遍数组
+4.取最前面那个，肯定是最小的没跑了
+5.寄
+
+
+
+### 代码
+
+```python3
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        List = sorted(self.generateReductionList(root,target))
+        while [] in List : List.remove([])
+        return List[0][1]
+        
+
+    def generateReductionList(self, root: TreeNode, target: float) -> []:
+        if not root : return [[]]
+        else : 
+            return [[abs(root.val - target),root.val]] + self.generateReductionList(root.left,target) + self.generateReductionList(root.right,target)
+
+            
+```

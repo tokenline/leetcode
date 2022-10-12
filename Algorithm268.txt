@@ -1,0 +1,18 @@
+### 解题思路
+调用Sorted()把nums重排。
+分类讨论：
+    1.目标数等于数组长度，则用if len(nums) not in nums这一段解决
+    2.目标数小于数组长度，从头遍历一边数组，数值不等于下标的返回。
+
+### 代码
+
+```python3
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        nums = sorted(nums)
+        if len(nums) not in nums : return len(nums)
+        for i in range(0,len(nums),1):
+            if nums[i] != i:
+                return i
+        return -1
+```
