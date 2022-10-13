@@ -1,0 +1,22 @@
+算法367题
+
+想试试之前log2 log3那题的解法，没想到跑成了 没超出时间
+
+1.首先把小于2^31-1的全部完全平方数放到一个集合里
+2.看看num是不是在这个集合里。是则返回True，反之返回False
+3.寄
+
+代码
+
+
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        PerfectSquareSet = set()
+        number = 0
+        while pow(number,2) <= pow(2,31)-1 :
+            PerfectSquareSet.add(pow(number,2))
+            number+=1
+
+        if num in PerfectSquareSet : return True
+        else : return False
+

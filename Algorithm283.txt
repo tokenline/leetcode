@@ -1,0 +1,24 @@
+### 解题思路
+1.首先把数组中的0全部Remove了，然后用count变量计数
+2.在数组末尾补上等量的0
+3.寄 属实非常屌丝了
+
+### 代码
+
+```python3
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+
+        count = 0 
+        while 0 in nums : 
+            nums.remove(0)
+            count += 1
+
+        for i in range (0, count ,1):
+            nums +=[0]
+
+            
+```

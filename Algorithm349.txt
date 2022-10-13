@@ -1,0 +1,24 @@
+### 解题思路
+1.把num1放到set()里去重
+2.撸一遍num2,若在集合中，且不在Buffer数组中，则加入Buffer数组中
+3.返回Buffer数组
+4.寄
+
+### 代码
+
+```python3
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        Buffer = []
+        IntersectionSet = set()
+        for num in nums1 :
+            if num not in IntersectionSet : IntersectionSet.add(num)
+        for num in nums2 :
+            if num in IntersectionSet : 
+                if num not in Buffer : Buffer.append(num)
+        
+        return Buffer
+
+        
+            
+```
