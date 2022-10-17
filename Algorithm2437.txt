@@ -1,0 +1,36 @@
+class Solution:
+    def countTime(self, time: str) -> int:
+        hh = time[0] + time[1]
+        mm = time[3] + time[4]
+
+        number_for_hour = 0
+        number_for_minute = 0
+
+        if hh[0] == "?" and hh[1] != "?":
+            if int(hh[1]) < 4 and int(hh[1]) >= 0:
+                number_for_hour = 3
+            if int(hh[1]) >= 4 and int(hh[1]) <= 9:
+                number_for_hour = 2
+        if hh[0] != "?" and hh[1] == "?":
+            if int(hh[0]) >= 0 and int(hh[0]) < 2:
+                number_for_hour = 10
+            if int(hh[0]) == 2:
+                number_for_hour = 4
+        if hh[0] == "?" and hh[1] == "?":
+            number_for_hour = 24
+        if hh[0] != "?" and hh[1] != "?":
+            number_for_hour = 1
+
+        if mm[0] == "?" and mm[1] != "?":
+            number_for_minute = 6
+        if mm[0] != "?" and mm[1] == "?":
+            number_for_minute = 10
+        if mm[0] == "?" and mm[1] == "?":
+            number_for_minute = 60
+        if mm[0] != "?" and mm[1] != "?":
+            number_for_minute = 1
+
+        return number_for_hour * number_for_minute
+
+
+
