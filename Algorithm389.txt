@@ -1,0 +1,24 @@
+### 解题思路
+
+将两个字符串存到数组中，然后用数组自带的remove方法去掉遍历时候的元素即可。究极愚蠢。
+
+### 代码
+
+```python3
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        list_s = []
+        list_t = []
+        for letter in s : 
+            list_s.append(letter)
+
+        for letter in t :
+            list_t.append(letter)
+
+        for letter in list_s :
+            if letter in list_t:
+                list_t.remove(letter)
+      
+        temp = list_t[0]
+        return temp
+```
