@@ -1,0 +1,12 @@
+class Solution:
+    def thirdMax(self, nums: list[int]) -> int:
+        count = 1
+        nums.sort(reverse=True)
+        if len(nums) < 3 : return nums[0]
+        for i in range(0,len(nums)-1,1):
+            if nums[i] > nums[i+1]:
+                count+=1
+                if count == 3 :
+                    return  nums[i+1]
+
+        return nums[0]
